@@ -1,0 +1,39 @@
+.chart-container {
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.form {
+  font-family: 'Arial', sans-sarif;
+  background-color: #dfdfdf;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.form .input-group {
+  display: flex;
+  gap: 10px;
+}
+.form .input-group input {
+  flex: 1;
+  border: 1px solid skyblue;
+}
+.form .input-group input:focus {
+  outline: none;
+  box-shadow: 0 0 15px skyblue;
+}
+.form .input-group .btn {
+  padding: 7px 10px;
+  border: none;
+  background-color: #0d8dc2;
+  color: #fff;
+  font-weight: 600;
+}
+.form .input-group .btn:focus {
+  outline: none;
+  box-shadow: 0 0 15px skyblue;
+}
