@@ -1,47 +1,32 @@
-const form = document.querySelector('.form');
-const profitInput = document.getElementById('profit');
 const yearInput = document.getElementById('year');
+const profitInput = document.getElementById('profit');
+const form = document.querySelector('.form');
 
-const profit = [];
-const years = [];
-// form input
-form.addEventListener('submit', (e) => {
-  // preventing default behaviour of form
-  e.preventDefault();
-  // push to arrays
-  profit.push(profitInput.value);
-  years.push(yearInput.value);
-  // store to localstorage
-  localStorage.setItem('profit', JSON.stringify(profit));
-  localStorage.setItem('years', JSON.stringify(years));
-});
+const years = [2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016];
+const profit = [3040, 3400, 3000, 2500, 3200, 2500, 2800, 3500];
 
-// chart context
 const ctx = document.getElementById('myChart').getContext('2d');
-
 const myChart = new Chart(ctx, {
-  type: 'bar',
+  type: 'line',
   data: {
-    labels: JSON.parse(localStorage.getItem('years')),
+    labels: years,
     datasets: [
       {
-        label: 'Profit',
-        data: JSON.parse(localStorage.getItem('profit')),
-        backgroundColor: 'rgba(54, 162, 235, 0.2)',
-        borderColor: 'rgba(54, 162, 235, 1)',
+        label: '# of Votes',
+        data: profit,
+        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        borderColor: 'rgba(255, 99, 132, 1)',
         borderWidth: 1,
       },
     ],
   },
-  options: {
-    scales: {
-      yAxes: [
-        {
-          ticks: {
-            beginAtZero: true,
-          },
-        },
-      ],
-    },
-  },
+});
+
+form.addEventListener('submit', function (e) {
+  // prevent default behaviour
+  e.preventDefault();
+  // console.log(myChart);
+  years.push(+yearInput.value);
+  profit.push(+profitInput.value);
+  myChart.update();
 });
